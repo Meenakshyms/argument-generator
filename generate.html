@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Argument</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="light">
+
+<div class="toggle-container">
+    <button onclick="toggleTheme()" class="toggle-btn neon-box">🌙 / ☀️</button>
+</div>
+
+<div class="container">
+    <h1 class="neon-title">Argument Generator</h1>
+
+    <form method="POST" class="form-box neon-box">
+        <input type="text" id="topic" name="topic" placeholder="Enter a topic" autocomplete="off" required value="{{ topic_input }}" class="neon-input">
+        <div id="suggestions" class="neon-suggestions"></div>
+
+        <select name="mode" class="neon-select">
+            <option value="supportive" {% if mode=='supportive' %}selected{% endif %}>Supportive</option>
+            <option value="against" {% if mode=='against' %}selected{% endif %}>Against</option>
+            <option value="balanced" {% if mode=='balanced' %}selected{% endif %}>Balanced</option>
+            <option value="critical" {% if mode=='critical' %}selected{% endif %}>Critical</option>
+        </select>
+
+        <button type="submit" class="neon-btn">Generate</button>
+    </form>
+
+    {% if result %}
+    <div class="output-box neon-box">
+        <h3>Generated Argument:</h3>
+        <p>{{ result }}</p>
+    </div>
+    {% endif %}
+
+    <a class="back-btn neon-box" href="/">← Back to Home</a>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
